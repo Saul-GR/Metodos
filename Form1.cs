@@ -57,7 +57,7 @@ namespace Metodos
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (roll == 0)//
+            if (roll == 0)///
             {
                 roll++;
                 tabVisibles();
