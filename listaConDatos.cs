@@ -39,6 +39,7 @@ namespace Metodos
                     pro.Add(objeto); // Agrega el objeto a la lista
                 }
                 MessageBox.Show("Se conecto a la base de datos");
+                
                 return pro;
                 //dgvUsuarios.DataSource = dt;
                 //estadoConn(conn);

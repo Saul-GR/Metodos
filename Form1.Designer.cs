@@ -53,7 +53,7 @@
             button1.Name = "button1";
             button1.Size = new Size(151, 23);
             button1.TabIndex = 0;
-            button1.Text = "Mostrar tab Registrarse";
+            button1.Text = "Bon sin función";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
