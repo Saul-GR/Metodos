@@ -40,11 +40,25 @@
             label2 = new Label();
             textBox2 = new TextBox();
             tabPage3 = new TabPage();
+            checkBoxActivo = new CheckBox();
+            labelPrecio = new Label();
+            labelDescripcion = new Label();
+            labelStock = new Label();
+            labelNombre = new Label();
+            textBoxPrecio = new TextBox();
+            textBoxStock = new TextBox();
+            textBoxDescripcion = new TextBox();
+            textBoxNombre = new TextBox();
+            btnModificar = new Button();
+            btnAgregar = new Button();
+            dgvInventario = new DataGridView();
             tabPage4 = new TabPage();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             tabPage2.SuspendLayout();
+            tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvInventario).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -162,12 +176,125 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(checkBoxActivo);
+            tabPage3.Controls.Add(labelPrecio);
+            tabPage3.Controls.Add(labelDescripcion);
+            tabPage3.Controls.Add(labelStock);
+            tabPage3.Controls.Add(labelNombre);
+            tabPage3.Controls.Add(textBoxPrecio);
+            tabPage3.Controls.Add(textBoxStock);
+            tabPage3.Controls.Add(textBoxDescripcion);
+            tabPage3.Controls.Add(textBoxNombre);
+            tabPage3.Controls.Add(btnModificar);
+            tabPage3.Controls.Add(btnAgregar);
+            tabPage3.Controls.Add(dgvInventario);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
             tabPage3.Size = new Size(768, 375);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Inventario";
             tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxActivo
+            // 
+            checkBoxActivo.AutoSize = true;
+            checkBoxActivo.Location = new Point(474, 36);
+            checkBoxActivo.Name = "checkBoxActivo";
+            checkBoxActivo.Size = new Size(82, 19);
+            checkBoxActivo.TabIndex = 11;
+            checkBoxActivo.Text = "Disponible";
+            checkBoxActivo.UseVisualStyleBackColor = true;
+            // 
+            // labelPrecio
+            // 
+            labelPrecio.AutoSize = true;
+            labelPrecio.Location = new Point(246, 70);
+            labelPrecio.Name = "labelPrecio";
+            labelPrecio.Size = new Size(40, 15);
+            labelPrecio.TabIndex = 10;
+            labelPrecio.Text = "Precio";
+            // 
+            // labelDescripcion
+            // 
+            labelDescripcion.AutoSize = true;
+            labelDescripcion.Location = new Point(241, 39);
+            labelDescripcion.Name = "labelDescripcion";
+            labelDescripcion.Size = new Size(69, 15);
+            labelDescripcion.TabIndex = 9;
+            labelDescripcion.Text = "Descripción";
+            // 
+            // labelStock
+            // 
+            labelStock.AutoSize = true;
+            labelStock.Location = new Point(29, 68);
+            labelStock.Name = "labelStock";
+            labelStock.Size = new Size(36, 15);
+            labelStock.TabIndex = 8;
+            labelStock.Text = "Stock";
+            // 
+            // labelNombre
+            // 
+            labelNombre.AutoSize = true;
+            labelNombre.Location = new Point(29, 38);
+            labelNombre.Name = "labelNombre";
+            labelNombre.Size = new Size(51, 15);
+            labelNombre.TabIndex = 7;
+            labelNombre.Text = "Nombre";
+            // 
+            // textBoxPrecio
+            // 
+            textBoxPrecio.Location = new Point(316, 65);
+            textBoxPrecio.Name = "textBoxPrecio";
+            textBoxPrecio.Size = new Size(100, 23);
+            textBoxPrecio.TabIndex = 6;
+            // 
+            // textBoxStock
+            // 
+            textBoxStock.Location = new Point(114, 65);
+            textBoxStock.Name = "textBoxStock";
+            textBoxStock.Size = new Size(100, 23);
+            textBoxStock.TabIndex = 5;
+            // 
+            // textBoxDescripcion
+            // 
+            textBoxDescripcion.Location = new Point(316, 35);
+            textBoxDescripcion.Name = "textBoxDescripcion";
+            textBoxDescripcion.Size = new Size(100, 23);
+            textBoxDescripcion.TabIndex = 4;
+            // 
+            // textBoxNombre
+            // 
+            textBoxNombre.Location = new Point(114, 36);
+            textBoxNombre.Name = "textBoxNombre";
+            textBoxNombre.Size = new Size(100, 23);
+            textBoxNombre.TabIndex = 3;
+            // 
+            // btnModificar
+            // 
+            btnModificar.Location = new Point(668, 68);
+            btnModificar.Name = "btnModificar";
+            btnModificar.Size = new Size(75, 23);
+            btnModificar.TabIndex = 2;
+            btnModificar.Text = "Modificar";
+            btnModificar.UseVisualStyleBackColor = true;
+            // 
+            // btnAgregar
+            // 
+            btnAgregar.Location = new Point(668, 30);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(75, 23);
+            btnAgregar.TabIndex = 1;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
+            // 
+            // dgvInventario
+            // 
+            dgvInventario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvInventario.Location = new Point(3, 106);
+            dgvInventario.Name = "dgvInventario";
+            dgvInventario.Size = new Size(762, 265);
+            dgvInventario.TabIndex = 0;
             // 
             // tabPage4
             // 
@@ -193,6 +320,9 @@
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
+            tabPage3.ResumeLayout(false);
+            tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvInventario).EndInit();
             ResumeLayout(false);
         }
 
@@ -211,5 +341,17 @@
         private TextBox textBox2;
         private Label label3;
         private TextBox textBox3;
+        private Button btnModificar;
+        private Button btnAgregar;
+        private DataGridView dgvInventario;
+        private Label labelPrecio;
+        private Label labelDescripcion;
+        private Label labelStock;
+        private Label labelNombre;
+        private TextBox textBoxPrecio;
+        private TextBox textBoxStock;
+        private TextBox textBoxDescripcion;
+        private TextBox textBoxNombre;
+        private CheckBox checkBoxActivo;
     }
 }

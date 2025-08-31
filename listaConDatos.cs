@@ -14,7 +14,7 @@ namespace Metodos
     {
         public List <Producto> prodcutos()
         {
-            string connectionString = "Server=localhost\\SQLEXPRESS;Database=Tienda;Trusted_Connection=True;TrustServerCertificate=True;";
+            string connectionString = "Server=localhost\\SQLEXPRESS;Database=Tiendas;Trusted_Connection=True;TrustServerCertificate=True;";
             DataTable dt = new DataTable();
 
             List<Producto> pro = new List<Producto>();
@@ -34,11 +34,12 @@ namespace Metodos
                         Nombre = row["Nombre"].ToString(), // Asigna el valor de la columna "Nombre"
                         Descripcion = row["Descripcion"].ToString(),
                         Stock = (int)row["Stock"],
-                        Precio= decimal.ToDouble((decimal)row["Precio"])
+                        Precio= decimal.ToDouble((decimal)row["Precio"]),
+                        Activo = Convert.ToBoolean(row["Precio"])
                     };
                     pro.Add(objeto); // Agrega el objeto a la lista
                 }
-                MessageBox.Show("Se conecto a la base de datos");
+                MessageBox.Show("Se conectó a la base de datos");
                 
                 return pro;
                 //dgvUsuarios.DataSource = dt;
@@ -51,10 +52,10 @@ namespace Metodos
                 MessageBox.Show("Se usaran datos autogenerados");
                            
                 // 2. Agrega elementos a la lista usando el método Add()
-                pro.Add(new Producto { Codigo = 1, Nombre = "Lapicero", Descripcion = "Lapicero de color negro C#", Stock = 5, Precio= 1.25 });
-                pro.Add(new Producto { Codigo = 2, Nombre = "Borrador", Descripcion = "Borrador tamaño grande C#", Stock = 2, Precio=2.5 });
-                pro.Add(new Producto { Codigo = 3, Nombre = "Tijeras", Descripcion = "Tijeras punta cuadrada C#", Stock = 3, Precio= 5.75});
-                pro.Add(new Producto { Codigo = 4, Nombre = "Folder", Descripcion = "Folder azul tamaño carta C#", Stock = 6, Precio= 2});
+                pro.Add(new Producto { Codigo = 1, Nombre = "Lapicero", Descripcion = "Lapicero de color negro C#", Stock = 5, Precio= 1.25, Activo= true });
+                pro.Add(new Producto { Codigo = 2, Nombre = "Borrador", Descripcion = "Borrador tamaño grande C#", Stock = 2, Precio=2.5, Activo= true });
+                pro.Add(new Producto { Codigo = 3, Nombre = "Tijeras", Descripcion = "Tijeras punta cuadrada C#", Stock = 3, Precio= 5.75, Activo= true});
+                pro.Add(new Producto { Codigo = 4, Nombre = "Folder", Descripcion = "Folder azul tamaño carta C#", Stock = 6, Precio= 2, Activo= true});
                 // 3. Usa la palabra clave 'return' para devolver la lista
                 return pro;
             }
