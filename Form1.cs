@@ -4,8 +4,6 @@ using System.Data.SqlClient;
 using Microsoft.Data.SqlClient;
 using System.Windows.Forms;
 
-
-
 namespace Metodos
 {
     public partial class Form1 : Form
@@ -55,23 +53,24 @@ namespace Metodos
                 MessageBox.Show("Error al cargar los datos :" + ex.Message);
                 MessageBox.Show("Se usaran datos autogenerados");
 
-                dt.Columns.Add("ID", typeof(int));
-                dt.Columns.Add("Nombre", typeof(string));
-                dt.Columns.Add("Correo", typeof(string));
+                //dt.Columns.Add("ID", typeof(int));
+                //dt.Columns.Add("Nombre", typeof(string));
+                //dt.Columns.Add("Correo", typeof(string));
 
-                DataRow fila1 = dt.NewRow();
-                fila1["ID"] = 1;
-                fila1["Nombre"] = "Juan";
-                fila1["Correo"] = "Juan@gmail.com";
-                dt.Rows.Add(fila1);
+                //DataRow fila1 = dt.NewRow();
+                //fila1["ID"] = 1;
+                //fila1["Nombre"] = "Juan";
+                //fila1["Correo"] = "Juan@gmail.com";
+                //dt.Rows.Add(fila1);
 
-                // Segunda fila
-                DataRow fila2 = dt.NewRow();
-                fila2["ID"] = 2;
-                fila2["Nombre"] = "Ana";
-                fila2["Correo"] = "Ana@gmail.com";
-                dt.Rows.Add(fila2);
-                dgvUsuarios.DataSource = dt;
+                //// Segunda fila
+                //DataRow fila2 = dt.NewRow();
+                //fila2["ID"] = 2;
+                //fila2["Nombre"] = "Ana";
+                //fila2["Correo"] = "Ana@gmail.com";
+                //dt.Rows.Add(fila2);
+                listaConDatos lista = new listaConDatos(); 
+                dgvUsuarios.DataSource = lista.prodcutos();
             }
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
