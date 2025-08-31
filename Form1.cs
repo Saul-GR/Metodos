@@ -11,6 +11,7 @@ namespace Metodos
         string connectionString = "Server=localhost\\SQLEXPRESS;Database=Tiendas;Trusted_Connection=True;TrustServerCertificate=True;";
         int idSeleccionado = 0;
         int roll = 0;
+        listaConDatos lista = new listaConDatos();
         TabPage tabPageOculto;
 
         public Form1()
@@ -18,7 +19,8 @@ namespace Metodos
             InitializeComponent();
             tabPageOculto = tabControl1.TabPages[1];
             tabVisibles();
-            CargarDatos();
+            dgvUsuarios.DataSource = lista.prodcutos();
+            //CargarDatos();
 
         }
         public void tabVisibles()
@@ -33,46 +35,46 @@ namespace Metodos
                tabControl1.TabPages.Insert(1, tabPageOculto);
             }
         }
-        private void CargarDatos()
-        {
-            DataTable dt = new DataTable();
-            try
-            {
-                SqlConnection conn = new SqlConnection(connectionString);
+        //private void CargarDatos()
+        //{
+        //    DataTable dt = new DataTable();
+        //    try
+        //    {
+        //        SqlConnection conn = new SqlConnection(connectionString);
 
-                string query = "SELECT * FROM Usuarios";
-                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        //        string query = "SELECT * FROM Usuarios";
+        //        SqlDataAdapter da = new SqlDataAdapter(query, conn);
                 
-                da.Fill(dt);
-                dgvUsuarios.DataSource = dt;
-                estadoConn(conn);
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar los datos :" + ex.Message);
-                MessageBox.Show("Se usaran datos autogenerados");
+        //        da.Fill(dt);
+        //        dgvUsuarios.DataSource = dt;
+        //        estadoConn(conn);
+        //        conn.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Error al cargar los datos :" + ex.Message);
+        //        MessageBox.Show("Se usaran datos autogenerados");
 
-                //dt.Columns.Add("ID", typeof(int));
-                //dt.Columns.Add("Nombre", typeof(string));
-                //dt.Columns.Add("Correo", typeof(string));
+        //        //dt.Columns.Add("ID", typeof(int));
+        //        //dt.Columns.Add("Nombre", typeof(string));
+        //        //dt.Columns.Add("Correo", typeof(string));
 
-                //DataRow fila1 = dt.NewRow();
-                //fila1["ID"] = 1;
-                //fila1["Nombre"] = "Juan";
-                //fila1["Correo"] = "Juan@gmail.com";
-                //dt.Rows.Add(fila1);
+        //        //DataRow fila1 = dt.NewRow();
+        //        //fila1["ID"] = 1;
+        //        //fila1["Nombre"] = "Juan";
+        //        //fila1["Correo"] = "Juan@gmail.com";
+        //        //dt.Rows.Add(fila1);
 
-                //// Segunda fila
-                //DataRow fila2 = dt.NewRow();
-                //fila2["ID"] = 2;
-                //fila2["Nombre"] = "Ana";
-                //fila2["Correo"] = "Ana@gmail.com";
-                //dt.Rows.Add(fila2);
-                listaConDatos lista = new listaConDatos(); 
-                dgvUsuarios.DataSource = lista.prodcutos();
-            }
-        }
+        //        //// Segunda fila
+        //        //DataRow fila2 = dt.NewRow();
+        //        //fila2["ID"] = 2;
+        //        //fila2["Nombre"] = "Ana";
+        //        //fila2["Correo"] = "Ana@gmail.com";
+        //        //dt.Rows.Add(fila2);
+        //        listaConDatos lista = new listaConDatos(); 
+        //        dgvUsuarios.DataSource = lista.prodcutos();
+        //    }
+        //}
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
