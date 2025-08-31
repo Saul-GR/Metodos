@@ -10,7 +10,7 @@ namespace Metodos
 {
     public partial class Form1 : Form
     {
-        string connectionString = "Server=localhost\\SQLEXPRESS;Database=Tienda;Trusted_Connection=True;TrustServerCertificate=True;";
+        string connectionString = "Server=localhost\\SQLEXPRESS;Database=Tiendas;Trusted_Connection=True;TrustServerCertificate=True;";
         int idSeleccionado = 0;
         int roll = 0;
         TabPage tabPageOculto;
@@ -37,19 +37,43 @@ namespace Metodos
         }
         private void CargarDatos()
         {
-            SqlConnection conn = new SqlConnection(connectionString);
-
-            string query = "SELECT * FROM Usuarios";
-            SqlDataAdapter da = new SqlDataAdapter(query, conn);
             DataTable dt = new DataTable();
-            da.Fill(dt);
-            dgvUsuarios.DataSource = dt;
-            estadoConn(conn);
-            conn.Close();
+            try
+            {
+                SqlConnection conn = new SqlConnection(connectionString);
 
+                string query = "SELECT * FROM Usuarios";
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                
+                da.Fill(dt);
+                dgvUsuarios.DataSource = dt;
+                estadoConn(conn);
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los datos :" + ex.Message);
+                MessageBox.Show("Se usaran datos autogenerados");
 
+                dt.Columns.Add("ID", typeof(int));
+                dt.Columns.Add("Nombre", typeof(string));
+                dt.Columns.Add("Correo", typeof(string));
+
+                DataRow fila1 = dt.NewRow();
+                fila1["ID"] = 1;
+                fila1["Nombre"] = "Juan";
+                fila1["Correo"] = "Juan@gmail.com";
+                dt.Rows.Add(fila1);
+
+                // Segunda fila
+                DataRow fila2 = dt.NewRow();
+                fila2["ID"] = 2;
+                fila2["Nombre"] = "Ana";
+                fila2["Correo"] = "Ana@gmail.com";
+                dt.Rows.Add(fila2);
+                dgvUsuarios.DataSource = dt;
+            }
         }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
