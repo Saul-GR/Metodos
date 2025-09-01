@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using Microsoft.Data.SqlClient;
 using System.Windows.Forms;
 
+
 namespace Metodos
 {
     public partial class Form1 : Form
@@ -45,23 +46,53 @@ namespace Metodos
             dgvUsuarios.DataSource = productos;
             dgvInventario.DataSource = productos;
         }
+        private void agregarProducto()
+        {
+            Producto NuevoProducto = new Producto();
+            int Codigo = 0;
+            string Nombre = "";
+            string Descripcion = "";
+            int Stock = 0;
+            double Precio = 0;
+            bool Activo = false;
 
+            Nombre = textBoxNombre.Text;
+            Descripcion = textBoxDescripcion.Text;
+            Stock = int.Parse(textBoxStock.Text);
+            Precio = double.Parse(textBoxPrecio.Text);
+            Activo = checkBoxActivo.Checked;
+            
+
+            NuevoProducto.Codigo = productos.Max(p => p.Codigo) + 1; // Asigna un código único incrementando el máximo existente
+            NuevoProducto.Nombre = Nombre;
+            NuevoProducto.Descripcion = Descripcion;
+            NuevoProducto.Stock = Stock;    
+            NuevoProducto.Precio = Precio;
+            NuevoProducto.Activo = Activo;
+            
+            productos.Add(NuevoProducto);
+            dgvInventario.DataSource = null;
+            dgvInventario.DataSource = productos;
+
+
+        }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             try
             {
-                int Codigo = 0;
-                string Nombre = "";
-                string Descripcion = "";
-                int Stock = 0;
-                double Precio = 0;
-                bool Activo = false;
+                agregarProducto();
+                //int Codigo = 0;
+                //string Nombre = "";
+                //string Descripcion = "";
+                //int Stock = 0;
+                //double Precio = 0;
+                //bool Activo = false;
 
-                Nombre = textBoxNombre.Text;
-                Descripcion = textBoxDescripcion.Text;
-                Stock = int.Parse(textBoxStock.Text);
-                Precio = double.Parse(textBoxPrecio.Text);
-                Activo = checkBoxActivo.Checked;
+                //Nombre = textBoxNombre.Text;
+                //Descripcion = textBoxDescripcion.Text;
+                //Stock = int.Parse(textBoxStock.Text);
+                //Precio = double.Parse(textBoxPrecio.Text);
+                //Activo = checkBoxActivo.Checked;
             }
             catch (Exception ex)
             {
