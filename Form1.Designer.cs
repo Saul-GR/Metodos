@@ -34,12 +34,13 @@
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             dgvUsuarios = new DataGridView();
-            tabPage2 = new TabPage();
+            tpCarrito = new TabPage();
             label3 = new Label();
             textBox3 = new TextBox();
             label2 = new Label();
             textBox2 = new TextBox();
             tabPage3 = new TabPage();
+            labelId = new Label();
             checkBoxActivo = new CheckBox();
             labelPrecio = new Label();
             labelDescripcion = new Label();
@@ -56,7 +57,7 @@
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
-            tabPage2.SuspendLayout();
+            tpCarrito.SuspendLayout();
             tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInventario).BeginInit();
             SuspendLayout();
@@ -92,7 +93,7 @@
             // tabControl1
             // 
             tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tpCarrito);
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Controls.Add(tabPage4);
             tabControl1.Location = new Point(12, 43);
@@ -123,19 +124,19 @@
             dgvUsuarios.Size = new Size(749, 281);
             dgvUsuarios.TabIndex = 3;
             // 
-            // tabPage2
+            // tpCarrito
             // 
-            tabPage2.Controls.Add(label3);
-            tabPage2.Controls.Add(textBox3);
-            tabPage2.Controls.Add(label2);
-            tabPage2.Controls.Add(textBox2);
-            tabPage2.Location = new Point(4, 24);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(768, 375);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Registrarse";
-            tabPage2.UseVisualStyleBackColor = true;
+            tpCarrito.Controls.Add(label3);
+            tpCarrito.Controls.Add(textBox3);
+            tpCarrito.Controls.Add(label2);
+            tpCarrito.Controls.Add(textBox2);
+            tpCarrito.Location = new Point(4, 24);
+            tpCarrito.Name = "tpCarrito";
+            tpCarrito.Padding = new Padding(3);
+            tpCarrito.Size = new Size(768, 375);
+            tpCarrito.TabIndex = 1;
+            tpCarrito.Text = "Carrito";
+            tpCarrito.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -176,6 +177,7 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(labelId);
             tabPage3.Controls.Add(checkBoxActivo);
             tabPage3.Controls.Add(labelPrecio);
             tabPage3.Controls.Add(labelDescripcion);
@@ -194,6 +196,15 @@
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Inventario";
             tabPage3.UseVisualStyleBackColor = true;
+            tabPage3.Click += tabPage3_Click;
+            // 
+            // labelId
+            // 
+            labelId.AutoSize = true;
+            labelId.Location = new Point(38, 11);
+            labelId.Name = "labelId";
+            labelId.Size = new Size(0, 15);
+            labelId.TabIndex = 12;
             // 
             // checkBoxActivo
             // 
@@ -295,6 +306,7 @@
             dgvInventario.Name = "dgvInventario";
             dgvInventario.Size = new Size(762, 265);
             dgvInventario.TabIndex = 0;
+            dgvInventario.CellClick += dgvInventario_CellClick;
             // 
             // tabPage4
             // 
@@ -318,8 +330,8 @@
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
-            tabPage2.ResumeLayout(false);
-            tabPage2.PerformLayout();
+            tpCarrito.ResumeLayout(false);
+            tpCarrito.PerformLayout();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInventario).EndInit();
@@ -333,7 +345,7 @@
         private Label label1;
         private TabControl tabControl1;
         private TabPage tabPage1;
-        private TabPage tabPage2;
+        private TabPage tpCarrito;
         private DataGridView dgvUsuarios;
         private TabPage tabPage3;
         private TabPage tabPage4;
@@ -353,5 +365,6 @@
         private TextBox textBoxDescripcion;
         private TextBox textBoxNombre;
         private CheckBox checkBoxActivo;
+        private Label labelId;
     }
 }
