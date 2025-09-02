@@ -47,6 +47,59 @@ namespace Metodos
             dgvUsuarios.DataSource = productos;
             dgvInventario.DataSource = productos;
         }
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                agregarProducto();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("El tipo de dato no es correcto o el formulario esta vacio: \n" + ex.Message);
+            }
+        }
+
+        private void dgvInventario_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow fila = dgvInventario.Rows[e.RowIndex];
+
+                idSeleccionado = Convert.ToInt32(fila.Cells["Codigo"].Value);
+                textBoxNombre.Text = fila.Cells["Nombre"].Value.ToString();
+                textBoxDescripcion.Text = fila.Cells["Descripcion"].Value.ToString();
+                textBoxStock.Text = fila.Cells["Stock"].Value.ToString();
+                textBoxPrecio.Text = fila.Cells["Precio"].Value.ToString();
+                checkBoxActivo.Checked = fila.Cells["Activo"].Value == "Si" ? true:false ;
+                labelId.Text = "Id:" + idSeleccionado.ToString();
+            }
+        }
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+        }
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            if (idSeleccionado == 0)
+            {
+                MessageBox.Show("Seleccione un producto para modificar.");
+                return;
+            }
+            try
+            {
+                modificarProducto();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("El tipo de dato no es correcto o el formulario esta vacio: \n" + ex.Message);
+            }
+        }
         private void agregarProducto()
         {
             Producto NuevoProducto = new Producto();
@@ -55,13 +108,13 @@ namespace Metodos
             string Descripcion = "";
             int Stock = 0;
             double Precio = 0;
-            bool Activo = false;
+            string Activo = "No";
 
             Nombre = textBoxNombre.Text;
             Descripcion = textBoxDescripcion.Text;
             Stock = int.Parse(textBoxStock.Text);
             Precio = double.Parse(textBoxPrecio.Text);
-            Activo = checkBoxActivo.Checked;
+            Activo = checkBoxActivo.Checked ? "Si" : "No";
 
             if (string.IsNullOrWhiteSpace(Nombre) || string.IsNullOrWhiteSpace(Descripcion) || Precio <= 0 || Stock <= 0)
             {
@@ -87,38 +140,80 @@ namespace Metodos
             productos.Add(NuevoProducto);
             dgvInventario.DataSource = null;
             dgvInventario.DataSource = productos;
+            LimpiarCampos();
         }
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void modificarProducto()
         {
-            try
+            Producto NuevoProducto = new Producto();
+            string Nombre = "";
+            string Descripcion = "";
+            int Stock = 0;
+            double Precio = 0;
+            string Activo = "No";
+
+            Nombre = textBoxNombre.Text;
+            Descripcion = textBoxDescripcion.Text;
+            Stock = int.Parse(textBoxStock.Text);
+            Precio = double.Parse(textBoxPrecio.Text);
+            Activo = checkBoxActivo.Checked ? "Si":"No";
+
+            if (string.IsNullOrWhiteSpace(Nombre) || string.IsNullOrWhiteSpace(Descripcion) || Precio <= 0 || Stock <= 0)
             {
-                agregarProducto();
+                MessageBox.Show("Los campos Nombre y Descripción no pueden estar vacíos.");
+                return; // Salir del método si los campos están vacíos
             }
-            catch (Exception ex)
+
+            foreach (Producto p in productos)
             {
-                MessageBox.Show("El tipo de dato no es correcto o el formulario esta vacio: \n" + ex.Message);
+                if (p.Codigo == idSeleccionado)
+                {
+                    if (!p.Nombre.Equals(Nombre, StringComparison.OrdinalIgnoreCase) || !p.Descripcion.Equals(Descripcion, StringComparison.OrdinalIgnoreCase)
+                        || p.Precio != Precio || p.Stock != Stock || p.Activo != Activo)
+                    {
+                        p.Nombre = Nombre;
+                        p.Descripcion = Descripcion;
+                        p.Stock = Stock;
+                        p.Precio = Precio;
+                        p.Activo = Activo;
+                        dgvInventario.DataSource = null;
+                        dgvInventario.DataSource = productos;
+                        
+                        LimpiarCampos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ingrese valor para modificar");
+                    }
+                }
             }
         }
-
-        private void dgvInventario_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void LimpiarCampos()
         {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow fila = dgvInventario.Rows[e.RowIndex];
-
-                idSeleccionado = Convert.ToInt32(fila.Cells["Codigo"].Value);
-                textBoxNombre.Text = fila.Cells["Nombre"].Value.ToString();
-                textBoxDescripcion.Text = fila.Cells["Descripcion"].Value.ToString();
-                textBoxStock.Text = fila.Cells["Stock"].Value.ToString();
-                textBoxPrecio.Text = fila.Cells["Precio"].Value.ToString();
-                checkBoxActivo.Checked = Convert.ToBoolean(fila.Cells["Activo"].Value);
-                labelId.Text = "Id:" + idSeleccionado.ToString();
-            }
+            textBoxNombre.Clear();
+            textBoxDescripcion.Clear();
+            textBoxStock.Clear();
+            textBoxPrecio.Clear();
+            checkBoxActivo.Checked = false;
+            labelId.Text = "";
+            idSeleccionado = 0;
         }
 
-        private void tabPage3_Click(object sender, EventArgs e)
+        private void dgvInventario_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dgvInventario_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            //if (e.ColumnIndex == dgvInventario.Columns[5].Index && e.RowIndex >= 0)
+            //{
+            //    // Asegúrate de que el valor es booleano
+            //    if (e.Value is bool valorBooleano)
+            //    {
+            //        // Asigna "Sí" para true y "No" para false
+            //        e.Value = valorBooleano ? "Sí" : "No";
+            //    }
+            //}
         }
     }
 }

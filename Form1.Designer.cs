@@ -40,6 +40,7 @@
             label2 = new Label();
             textBox2 = new TextBox();
             tabPage3 = new TabPage();
+            btnLimpiar = new Button();
             labelId = new Label();
             checkBoxActivo = new CheckBox();
             labelPrecio = new Label();
@@ -177,6 +178,7 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(btnLimpiar);
             tabPage3.Controls.Add(labelId);
             tabPage3.Controls.Add(checkBoxActivo);
             tabPage3.Controls.Add(labelPrecio);
@@ -197,6 +199,16 @@
             tabPage3.Text = "Inventario";
             tabPage3.UseVisualStyleBackColor = true;
             tabPage3.Click += tabPage3_Click;
+            // 
+            // btnLimpiar
+            // 
+            btnLimpiar.Location = new Point(474, 66);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(75, 23);
+            btnLimpiar.TabIndex = 13;
+            btnLimpiar.Text = "Limpiar";
+            btnLimpiar.UseVisualStyleBackColor = true;
+            btnLimpiar.Click += button2_Click;
             // 
             // labelId
             // 
@@ -288,6 +300,7 @@
             btnModificar.TabIndex = 2;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.Click += btnModificar_Click;
             // 
             // btnAgregar
             // 
@@ -307,6 +320,8 @@
             dgvInventario.Size = new Size(762, 265);
             dgvInventario.TabIndex = 0;
             dgvInventario.CellClick += dgvInventario_CellClick;
+            dgvInventario.CellContentClick += dgvInventario_CellContentClick;
+            dgvInventario.CellFormatting += dgvInventario_CellFormatting;
             // 
             // tabPage4
             // 
@@ -366,5 +381,6 @@
         private TextBox textBoxNombre;
         private CheckBox checkBoxActivo;
         private Label labelId;
+        private Button btnLimpiar;
     }
 }

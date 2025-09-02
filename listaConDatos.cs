@@ -35,7 +35,7 @@ namespace Metodos
                         Descripcion = row["Descripcion"].ToString(),
                         Stock = (int)row["Stock"],
                         Precio= decimal.ToDouble((decimal)row["Precio"]),
-                        Activo = Convert.ToBoolean(row["Precio"])
+                        Activo = Convert.ToString(row["Activo"])
                     };
                     pro.Add(objeto); // Agrega el objeto a la lista
                 }
@@ -52,10 +52,10 @@ namespace Metodos
                 MessageBox.Show("Se usaran datos autogenerados");
                            
                 // 2. Agrega elementos a la lista usando el método Add()
-                pro.Add(new Producto { Codigo = 1, Nombre = "Lapicero", Descripcion = "Lapicero de color negro C#", Stock = 5, Precio= 1.25, Activo= true });
-                pro.Add(new Producto { Codigo = 2, Nombre = "Borrador", Descripcion = "Borrador tamaño grande C#", Stock = 2, Precio=2.5, Activo= true });
-                pro.Add(new Producto { Codigo = 3, Nombre = "Tijeras", Descripcion = "Tijeras punta cuadrada C#", Stock = 3, Precio= 5.75, Activo= true});
-                pro.Add(new Producto { Codigo = 4, Nombre = "Folder", Descripcion = "Folder azul tamaño carta C#", Stock = 6, Precio= 2, Activo= true});
+                pro.Add(new Producto { Codigo = 1, Nombre = "Lapicero", Descripcion = "Lapicero de color negro C#", Stock = 5, Precio= 1.25, Activo= "Si" });
+                pro.Add(new Producto { Codigo = 2, Nombre = "Borrador", Descripcion = "Borrador tamaño grande C#", Stock = 2, Precio=2.5, Activo= "Si" });
+                pro.Add(new Producto { Codigo = 3, Nombre = "Tijeras", Descripcion = "Tijeras punta cuadrada C#", Stock = 3, Precio= 5.75, Activo= "Si"});
+                pro.Add(new Producto { Codigo = 4, Nombre = "Folder", Descripcion = "Folder azul tamaño carta C#", Stock = 6, Precio= 2, Activo= "Si"});
                 // 3. Usa la palabra clave 'return' para devolver la lista
                 return pro;
             }
