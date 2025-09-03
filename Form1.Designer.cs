@@ -122,6 +122,7 @@
             dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvUsuarios.Location = new Point(6, 79);
             dgvUsuarios.Name = "dgvUsuarios";
+            dgvUsuarios.ReadOnly = true;
             dgvUsuarios.Size = new Size(749, 281);
             dgvUsuarios.TabIndex = 3;
             // 
@@ -317,6 +318,7 @@
             dgvInventario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvInventario.Location = new Point(3, 106);
             dgvInventario.Name = "dgvInventario";
+            dgvInventario.ReadOnly = true;
             dgvInventario.Size = new Size(762, 265);
             dgvInventario.TabIndex = 0;
             dgvInventario.CellClick += dgvInventario_CellClick;
