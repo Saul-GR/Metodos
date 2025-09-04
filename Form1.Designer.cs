@@ -29,11 +29,21 @@
         private void InitializeComponent()
         {
             button1 = new Button();
-            textBox1 = new TextBox();
+            textBoxProBuscado = new TextBox();
             label1 = new Label();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
-            dgvUsuarios = new DataGridView();
+            textBoxProStock = new TextBox();
+            textBoxProPrecio = new TextBox();
+            textBoxProDescripcion = new TextBox();
+            textBoxProNombre = new TextBox();
+            textBoxProId = new TextBox();
+            labelProStock = new Label();
+            labelProPrecio = new Label();
+            labelProDescripcion = new Label();
+            lableProNombre = new Label();
+            labelProId = new Label();
+            dgvProducto = new DataGridView();
             tpCarrito = new TabPage();
             label3 = new Label();
             textBox3 = new TextBox();
@@ -55,9 +65,10 @@
             btnAgregar = new Button();
             dgvInventario = new DataGridView();
             tabPage4 = new TabPage();
+            button2 = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProducto).BeginInit();
             tpCarrito.SuspendLayout();
             tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInventario).BeginInit();
@@ -65,30 +76,30 @@
             // 
             // button1
             // 
-            button1.Location = new Point(128, 21);
+            button1.Location = new Point(574, 5);
             button1.Name = "button1";
             button1.Size = new Size(151, 23);
             button1.TabIndex = 0;
-            button1.Text = "Bon sin función";
+            button1.Text = "Buscar";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // textBox1
+            // textBoxProBuscado
             // 
-            textBox1.Location = new Point(6, 21);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 1;
-            textBox1.TextChanged += textBox1_TextChanged;
+            textBoxProBuscado.Location = new Point(127, 6);
+            textBoxProBuscado.Name = "textBoxProBuscado";
+            textBoxProBuscado.Size = new Size(104, 23);
+            textBoxProBuscado.TabIndex = 1;
+            textBoxProBuscado.TextChanged += textBox1_TextChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(325, 21);
+            label1.Location = new Point(27, 13);
             label1.Name = "label1";
-            label1.Size = new Size(38, 15);
+            label1.Size = new Size(94, 15);
             label1.TabIndex = 2;
-            label1.Text = "label1";
+            label1.Text = "Buscar producto";
             label1.Click += label1_Click;
             // 
             // tabControl1
@@ -105,8 +116,19 @@
             // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(dgvUsuarios);
-            tabPage1.Controls.Add(textBox1);
+            tabPage1.Controls.Add(button2);
+            tabPage1.Controls.Add(textBoxProStock);
+            tabPage1.Controls.Add(textBoxProPrecio);
+            tabPage1.Controls.Add(textBoxProDescripcion);
+            tabPage1.Controls.Add(textBoxProNombre);
+            tabPage1.Controls.Add(textBoxProId);
+            tabPage1.Controls.Add(labelProStock);
+            tabPage1.Controls.Add(labelProPrecio);
+            tabPage1.Controls.Add(labelProDescripcion);
+            tabPage1.Controls.Add(lableProNombre);
+            tabPage1.Controls.Add(labelProId);
+            tabPage1.Controls.Add(dgvProducto);
+            tabPage1.Controls.Add(textBoxProBuscado);
             tabPage1.Controls.Add(label1);
             tabPage1.Controls.Add(button1);
             tabPage1.Location = new Point(4, 24);
@@ -117,14 +139,100 @@
             tabPage1.Text = "Productos";
             tabPage1.UseVisualStyleBackColor = true;
             // 
-            // dgvUsuarios
+            // textBoxProStock
             // 
-            dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsuarios.Location = new Point(6, 79);
-            dgvUsuarios.Name = "dgvUsuarios";
-            dgvUsuarios.ReadOnly = true;
-            dgvUsuarios.Size = new Size(749, 281);
-            dgvUsuarios.TabIndex = 3;
+            textBoxProStock.Location = new Point(388, 73);
+            textBoxProStock.Name = "textBoxProStock";
+            textBoxProStock.ReadOnly = true;
+            textBoxProStock.Size = new Size(53, 23);
+            textBoxProStock.TabIndex = 13;
+            // 
+            // textBoxProPrecio
+            // 
+            textBoxProPrecio.Location = new Point(388, 46);
+            textBoxProPrecio.Name = "textBoxProPrecio";
+            textBoxProPrecio.ReadOnly = true;
+            textBoxProPrecio.Size = new Size(53, 23);
+            textBoxProPrecio.TabIndex = 12;
+            // 
+            // textBoxProDescripcion
+            // 
+            textBoxProDescripcion.Location = new Point(127, 95);
+            textBoxProDescripcion.Name = "textBoxProDescripcion";
+            textBoxProDescripcion.ReadOnly = true;
+            textBoxProDescripcion.Size = new Size(190, 23);
+            textBoxProDescripcion.TabIndex = 11;
+            // 
+            // textBoxProNombre
+            // 
+            textBoxProNombre.Location = new Point(127, 68);
+            textBoxProNombre.Name = "textBoxProNombre";
+            textBoxProNombre.ReadOnly = true;
+            textBoxProNombre.Size = new Size(190, 23);
+            textBoxProNombre.TabIndex = 10;
+            // 
+            // textBoxProId
+            // 
+            textBoxProId.Location = new Point(127, 41);
+            textBoxProId.Name = "textBoxProId";
+            textBoxProId.ReadOnly = true;
+            textBoxProId.Size = new Size(104, 23);
+            textBoxProId.TabIndex = 9;
+            // 
+            // labelProStock
+            // 
+            labelProStock.AutoSize = true;
+            labelProStock.Location = new Point(343, 76);
+            labelProStock.Name = "labelProStock";
+            labelProStock.Size = new Size(39, 15);
+            labelProStock.TabIndex = 8;
+            labelProStock.Text = "Stock:";
+            // 
+            // labelProPrecio
+            // 
+            labelProPrecio.AutoSize = true;
+            labelProPrecio.Location = new Point(339, 49);
+            labelProPrecio.Name = "labelProPrecio";
+            labelProPrecio.Size = new Size(43, 15);
+            labelProPrecio.TabIndex = 7;
+            labelProPrecio.Text = "Precio:";
+            // 
+            // labelProDescripcion
+            // 
+            labelProDescripcion.AutoSize = true;
+            labelProDescripcion.Location = new Point(27, 98);
+            labelProDescripcion.Name = "labelProDescripcion";
+            labelProDescripcion.Size = new Size(72, 15);
+            labelProDescripcion.TabIndex = 6;
+            labelProDescripcion.Text = "Descripción:";
+            // 
+            // lableProNombre
+            // 
+            lableProNombre.AutoSize = true;
+            lableProNombre.Location = new Point(27, 76);
+            lableProNombre.Name = "lableProNombre";
+            lableProNombre.Size = new Size(54, 15);
+            lableProNombre.TabIndex = 5;
+            lableProNombre.Text = "Nombre:";
+            // 
+            // labelProId
+            // 
+            labelProId.AutoSize = true;
+            labelProId.Location = new Point(27, 49);
+            labelProId.Name = "labelProId";
+            labelProId.Size = new Size(20, 15);
+            labelProId.TabIndex = 4;
+            labelProId.Text = "Id:";
+            // 
+            // dgvProducto
+            // 
+            dgvProducto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProducto.Location = new Point(6, 159);
+            dgvProducto.Name = "dgvProducto";
+            dgvProducto.ReadOnly = true;
+            dgvProducto.Size = new Size(749, 201);
+            dgvProducto.TabIndex = 3;
+            dgvProducto.CellClick += dgvUsuarios_CellClick;
             // 
             // tpCarrito
             // 
@@ -334,6 +442,16 @@
             tabPage4.Text = "Control de usuarios";
             tabPage4.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            button2.Location = new Point(574, 45);
+            button2.Name = "button2";
+            button2.Size = new Size(151, 23);
+            button2.TabIndex = 14;
+            button2.Text = "Limpiar";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click_1;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -346,7 +464,7 @@
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProducto).EndInit();
             tpCarrito.ResumeLayout(false);
             tpCarrito.PerformLayout();
             tabPage3.ResumeLayout(false);
@@ -358,12 +476,12 @@
         #endregion
 
         private Button button1;
-        private TextBox textBox1;
+        private TextBox textBoxProBuscado;
         private Label label1;
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tpCarrito;
-        private DataGridView dgvUsuarios;
+        private DataGridView dgvProducto;
         private TabPage tabPage3;
         private TabPage tabPage4;
         private Label label2;
@@ -384,5 +502,16 @@
         private CheckBox checkBoxActivo;
         private Label labelId;
         private Button btnLimpiar;
+        private Label labelProDescripcion;
+        private Label lableProNombre;
+        private Label labelProId;
+        private Label labelProPrecio;
+        private Label labelProStock;
+        private TextBox textBoxProStock;
+        private TextBox textBoxProPrecio;
+        private TextBox textBoxProDescripcion;
+        private TextBox textBoxProNombre;
+        private TextBox textBoxProId;
+        private Button button2;
     }
 }

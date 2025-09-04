@@ -27,7 +27,72 @@ namespace Metodos
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            List<Producto> proBus = new List<Producto>();
+            Producto proBuscado = new Producto();
+            string datoBuscado = "";
+            LimpiarCampos2();
 
+
+
+
+            datoBuscado = textBoxProBuscado.Text;
+
+
+            if (string.IsNullOrWhiteSpace(datoBuscado))
+            {
+                MessageBox.Show("Ingrese dato en el campo de búsqueda!");
+                return; // Salir del método si el campo de búsqueda está vacío
+            }
+            foreach (Producto p in productos)
+            {
+                if (datoBuscado.All(char.IsDigit) == true)
+                {
+                    if (p.Codigo == int.Parse(datoBuscado))
+                    {
+                        idSeleccionado = p.Codigo;
+                        proBuscado.Codigo = p.Codigo;
+                        proBuscado.Nombre = p.Nombre;
+                        proBuscado.Descripcion = p.Descripcion;
+                        proBuscado.Stock = p.Stock;
+                        proBuscado.Precio = p.Precio;
+                        proBuscado.Activo = p.Activo;
+
+                        proBus.Add(proBuscado);
+                        dgvProducto.DataSource = null;
+                        dgvProducto.DataSource = proBus;
+                        // MessageBox.Show("Encontrado en código.");
+                        textBoxProNombre.Text=p.Nombre;
+                        textBoxProDescripcion.Text =p.Descripcion;
+                        textBoxProStock.Text = p.Stock.ToString();
+                        textBoxProPrecio.Text = p.Precio.ToString();
+                        textBoxProId.Text = p.Codigo.ToString();
+
+                    }
+                }
+                else if (p.Nombre.Equals(datoBuscado, StringComparison.OrdinalIgnoreCase))
+                {
+                    idSeleccionado = p.Codigo;
+                    proBuscado.Codigo = p.Codigo;
+                    proBuscado.Nombre = p.Nombre;
+                    proBuscado.Descripcion = p.Descripcion;
+                    proBuscado.Stock = p.Stock;
+                    proBuscado.Precio = p.Precio;
+                    proBuscado.Activo = p.Activo;
+
+                    proBus.Add(proBuscado);
+                    dgvProducto.DataSource = null;
+                    dgvProducto.DataSource = proBus;
+                    MessageBox.Show("Encontrado en nombre.");
+
+                }
+
+            }
+            if (idSeleccionado == 0)
+            {
+                MessageBox.Show("No se encontró el producto en el inventario.");
+                return; // Salir del método si el producto no se encuentra
+            }
+            idSeleccionado = 0;
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -44,7 +109,7 @@ namespace Metodos
         private void CargarDatos()
         {
             productos = lista.prodcutos();
-            dgvUsuarios.DataSource = productos;
+            dgvProducto.DataSource = productos;
             dgvInventario.DataSource = productos;
         }
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -70,7 +135,7 @@ namespace Metodos
                 textBoxDescripcion.Text = fila.Cells["Descripcion"].Value.ToString();
                 textBoxStock.Text = fila.Cells["Stock"].Value.ToString();
                 textBoxPrecio.Text = fila.Cells["Precio"].Value.ToString();
-                checkBoxActivo.Checked = fila.Cells["Activo"].Value == "Si" ? true:false ;
+                checkBoxActivo.Checked = fila.Cells["Activo"].Value == "Si" ? true : false;
                 labelId.Text = "Id:" + idSeleccionado.ToString();
             }
         }
@@ -155,7 +220,7 @@ namespace Metodos
             Descripcion = textBoxDescripcion.Text;
             Stock = int.Parse(textBoxStock.Text);
             Precio = double.Parse(textBoxPrecio.Text);
-            Activo = checkBoxActivo.Checked ? "Si":"No";
+            Activo = checkBoxActivo.Checked ? "Si" : "No";
 
             if (string.IsNullOrWhiteSpace(Nombre) || string.IsNullOrWhiteSpace(Descripcion) || Precio <= 0 || Stock <= 0)
             {
@@ -177,7 +242,7 @@ namespace Metodos
                         p.Activo = Activo;
                         dgvInventario.DataSource = null;
                         dgvInventario.DataSource = productos;
-                        
+
                         LimpiarCampos();
                     }
                     else
@@ -196,6 +261,34 @@ namespace Metodos
             checkBoxActivo.Checked = false;
             labelId.Text = "";
             idSeleccionado = 0;
+
+            textBoxProNombre.Clear();
+            textBoxProDescripcion.Clear();
+            textBoxProStock.Clear();
+            textBoxProPrecio.Clear();
+            textBoxProId.Clear();
+            textBoxProBuscado.Clear();
+            dgvProducto.DataSource = null;
+            dgvProducto.DataSource = productos;
+        }
+        private void LimpiarCampos2()
+        {
+            textBoxNombre.Clear();
+            textBoxDescripcion.Clear();
+            textBoxStock.Clear();
+            textBoxPrecio.Clear();
+            checkBoxActivo.Checked = false;
+            labelId.Text = "";
+            idSeleccionado = 0;
+
+            textBoxProNombre.Clear();
+            textBoxProDescripcion.Clear();
+            textBoxProStock.Clear();
+            textBoxProPrecio.Clear();
+            textBoxProId.Clear();
+            //textBoxProBuscado.Clear();
+            dgvProducto.DataSource = null;
+            dgvProducto.DataSource = productos;
         }
 
         private void dgvInventario_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -214,6 +307,27 @@ namespace Metodos
             //        e.Value = valorBooleano ? "Sí" : "No";
             //    }
             //}
+        }
+
+        private void dgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow fila = dgvInventario.Rows[e.RowIndex];
+
+                idSeleccionado = Convert.ToInt32(fila.Cells["Codigo"].Value);
+                textBoxProNombre.Text = fila.Cells["Nombre"].Value.ToString();
+                textBoxProDescripcion.Text = fila.Cells["Descripcion"].Value.ToString();
+                textBoxProStock.Text = fila.Cells["Stock"].Value.ToString();
+                textBoxProPrecio.Text = fila.Cells["Precio"].Value.ToString();
+                textBoxProId.Text = fila.Cells["Codigo"].Value.ToString();
+            }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+            
         }
     }
 }
