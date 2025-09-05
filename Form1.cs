@@ -71,7 +71,7 @@ namespace Metodos
                 }
                 else if (p.Nombre.Contains(datoBuscado, StringComparison.OrdinalIgnoreCase))
                 {
-                    proBuscado= new Producto();
+                    proBuscado= new Producto();//
                     idSeleccionado = p.Codigo;
                     
                     proBuscado.Codigo = p.Codigo;
