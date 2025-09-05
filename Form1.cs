@@ -69,8 +69,9 @@ namespace Metodos
                         return;
                     }
                 }
-                else if (p.Nombre.Equals(datoBuscado, StringComparison.OrdinalIgnoreCase))
+                else if (p.Nombre.Contains(datoBuscado, StringComparison.OrdinalIgnoreCase))
                 {
+                    proBuscado= new Producto();
                     idSeleccionado = p.Codigo;
                     
                     proBuscado.Codigo = p.Codigo;
@@ -84,7 +85,7 @@ namespace Metodos
                     dgvProducto.DataSource = proBus;
 
 
-                    MessageBox.Show("Encontrado en nombre."+p.Nombre);
+                    //MessageBox.Show("Encontrado en nombre."+p.Nombre);
 
                 }
                 
