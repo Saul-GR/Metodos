@@ -66,27 +66,33 @@ namespace Metodos
                         textBoxProStock.Text = p.Stock.ToString();
                         textBoxProPrecio.Text = p.Precio.ToString();
                         textBoxProId.Text = p.Codigo.ToString();
-
+                        return;
                     }
                 }
                 else if (p.Nombre.Equals(datoBuscado, StringComparison.OrdinalIgnoreCase))
                 {
                     idSeleccionado = p.Codigo;
+                    
                     proBuscado.Codigo = p.Codigo;
                     proBuscado.Nombre = p.Nombre;
                     proBuscado.Descripcion = p.Descripcion;
                     proBuscado.Stock = p.Stock;
                     proBuscado.Precio = p.Precio;
                     proBuscado.Activo = p.Activo;
-
                     proBus.Add(proBuscado);
                     dgvProducto.DataSource = null;
                     dgvProducto.DataSource = proBus;
-                    MessageBox.Show("Encontrado en nombre.");
+
+
+                    MessageBox.Show("Encontrado en nombre."+p.Nombre);
 
                 }
-
+                
             }
+            //Usar p.Nombre.Contains pero no ha funcionado
+            //proBus.Add(proBuscado);
+            //dgvProducto.DataSource = null;
+            //dgvProducto.DataSource = proBus;
             if (idSeleccionado == 0)
             {
                 MessageBox.Show("No se encontró el producto en el inventario.");
