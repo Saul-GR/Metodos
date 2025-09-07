@@ -12,6 +12,8 @@ namespace Metodos
     {
         string connectionString = "Server=localhost\\SQLEXPRESS;Database=Tiendas;Trusted_Connection=True;TrustServerCertificate=True;";
         int idSeleccionado = 0;
+        int MaximoCompra = 0;
+        double SubTotal = 0;
         listaConDatos lista = new listaConDatos();
         List<Producto> productos = new List<Producto>();
 
@@ -40,7 +42,7 @@ namespace Metodos
 
             if (string.IsNullOrWhiteSpace(datoBuscado))
             {
-                MessageBox.Show("Ingrese dato en el campo de búsqueda!");
+                MessageBox.Show("Ingrese dato en el campo de búsqueda Saúl!");
                 return; // Salir del método si el campo de búsqueda está vacío
             }
             foreach (Producto p in productos)
@@ -61,8 +63,8 @@ namespace Metodos
                         dgvProducto.DataSource = null;
                         dgvProducto.DataSource = proBus;
                         // MessageBox.Show("Encontrado en código.");
-                        textBoxProNombre.Text=p.Nombre;
-                        textBoxProDescripcion.Text =p.Descripcion;
+                        textBoxProNombre.Text = p.Nombre;
+                        textBoxProDescripcion.Text = p.Descripcion;
                         textBoxProStock.Text = p.Stock.ToString();
                         textBoxProPrecio.Text = p.Precio.ToString();
                         textBoxProId.Text = p.Codigo.ToString();
@@ -71,9 +73,9 @@ namespace Metodos
                 }
                 else if (p.Nombre.Contains(datoBuscado, StringComparison.OrdinalIgnoreCase))
                 {
-                    proBuscado= new Producto();//
+                    proBuscado = new Producto();
                     idSeleccionado = p.Codigo;
-                    
+
                     proBuscado.Codigo = p.Codigo;
                     proBuscado.Nombre = p.Nombre;
                     proBuscado.Descripcion = p.Descripcion;
@@ -88,7 +90,7 @@ namespace Metodos
                     //MessageBox.Show("Encontrado en nombre."+p.Nombre);
 
                 }
-                
+
             }
             //Usar p.Nombre.Contains pero no ha funcionado
             //proBus.Add(proBuscado);
@@ -115,6 +117,7 @@ namespace Metodos
         }
         private void CargarDatos()
         {
+            numericUpDownCarrito.Maximum = MaximoCompra;
             productos = lista.prodcutos();
             dgvProducto.DataSource = productos;
             dgvInventario.DataSource = productos;
@@ -144,6 +147,8 @@ namespace Metodos
                 textBoxPrecio.Text = fila.Cells["Precio"].Value.ToString();
                 checkBoxActivo.Checked = fila.Cells["Activo"].Value == "Si" ? true : false;
                 labelId.Text = "Id:" + idSeleccionado.ToString();
+
+
             }
         }
 
@@ -277,6 +282,12 @@ namespace Metodos
             textBoxProBuscado.Clear();
             dgvProducto.DataSource = null;
             dgvProducto.DataSource = productos;
+
+            MaximoCompra = 0;
+            numericUpDownCarrito.Minimum = 0;
+            numericUpDownCarrito.Value = MaximoCompra;
+            numericUpDownCarrito.Maximum = 0;
+            labelSubTotal.Text = "Q. 0.00";
         }
         private void LimpiarCampos2()
         {
@@ -328,13 +339,31 @@ namespace Metodos
                 textBoxProStock.Text = fila.Cells["Stock"].Value.ToString();
                 textBoxProPrecio.Text = fila.Cells["Precio"].Value.ToString();
                 textBoxProId.Text = fila.Cells["Codigo"].Value.ToString();
+                MaximoCompra = int.Parse(fila.Cells["Stock"].Value.ToString());
+                numericUpDownCarrito.Maximum = MaximoCompra;
+                numericUpDownCarrito.Value = 1;
+                numericUpDownCarrito.Minimum = 1;
+                SubTotal = double.Parse(fila.Cells["Precio"].Value.ToString());
+                SubTotal = SubTotal * (double)numericUpDownCarrito.Value;
+                textBoxSubTotal.Text = "Q. " + SubTotal;
+                //MessageBox.Show("Compra maxima: " + MaximoCompra);
             }
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
             LimpiarCampos();
-            
+
         }
+
+        private void numericUpDownCarrito_ValueChanged(object sender, EventArgs e)
+        {
+            if (numericUpDownCarrito.Value > 0)
+            {
+                SubTotal = double.Parse(textBoxProPrecio.Text);
+                SubTotal = SubTotal * (double)numericUpDownCarrito.Value;
+                textBoxSubTotal.Text = "Q. " + SubTotal;
+            }
+        }    
     }
 }
