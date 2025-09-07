@@ -33,6 +33,11 @@
             label1 = new Label();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            textBoxSubTotal = new TextBox();
+            labelSubTotal = new Label();
+            numericUpDownCarrito = new NumericUpDown();
+            button3 = new Button();
+            button2 = new Button();
             textBoxProStock = new TextBox();
             textBoxProPrecio = new TextBox();
             textBoxProDescripcion = new TextBox();
@@ -65,9 +70,9 @@
             btnAgregar = new Button();
             dgvInventario = new DataGridView();
             tabPage4 = new TabPage();
-            button2 = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownCarrito).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProducto).BeginInit();
             tpCarrito.SuspendLayout();
             tabPage3.SuspendLayout();
@@ -116,6 +121,10 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(textBoxSubTotal);
+            tabPage1.Controls.Add(labelSubTotal);
+            tabPage1.Controls.Add(numericUpDownCarrito);
+            tabPage1.Controls.Add(button3);
             tabPage1.Controls.Add(button2);
             tabPage1.Controls.Add(textBoxProStock);
             tabPage1.Controls.Add(textBoxProPrecio);
@@ -138,6 +147,52 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Productos";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // textBoxSubTotal
+            // 
+            textBoxSubTotal.Location = new Point(574, 119);
+            textBoxSubTotal.Name = "textBoxSubTotal";
+            textBoxSubTotal.ReadOnly = true;
+            textBoxSubTotal.Size = new Size(71, 23);
+            textBoxSubTotal.TabIndex = 18;
+            textBoxSubTotal.Text = "Q. 0.00";
+            // 
+            // labelSubTotal
+            // 
+            labelSubTotal.AutoSize = true;
+            labelSubTotal.Location = new Point(516, 123);
+            labelSubTotal.Name = "labelSubTotal";
+            labelSubTotal.Size = new Size(59, 15);
+            labelSubTotal.TabIndex = 17;
+            labelSubTotal.Text = "Sub-total:";
+            // 
+            // numericUpDownCarrito
+            // 
+            numericUpDownCarrito.Location = new Point(574, 90);
+            numericUpDownCarrito.Name = "numericUpDownCarrito";
+            numericUpDownCarrito.Size = new Size(71, 23);
+            numericUpDownCarrito.TabIndex = 16;
+            numericUpDownCarrito.TextAlign = HorizontalAlignment.Center;
+            numericUpDownCarrito.ValueChanged += numericUpDownCarrito_ValueChanged;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(651, 90);
+            button3.Name = "button3";
+            button3.Size = new Size(74, 44);
+            button3.TabIndex = 15;
+            button3.Text = "Agregar al Carrito";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(574, 45);
+            button2.Name = "button2";
+            button2.Size = new Size(151, 23);
+            button2.TabIndex = 14;
+            button2.Text = "Limpiar";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click_1;
             // 
             // textBoxProStock
             // 
@@ -442,16 +497,6 @@
             tabPage4.Text = "Control de usuarios";
             tabPage4.UseVisualStyleBackColor = true;
             // 
-            // button2
-            // 
-            button2.Location = new Point(574, 45);
-            button2.Name = "button2";
-            button2.Size = new Size(151, 23);
-            button2.TabIndex = 14;
-            button2.Text = "Limpiar";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click_1;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -464,6 +509,7 @@
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownCarrito).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvProducto).EndInit();
             tpCarrito.ResumeLayout(false);
             tpCarrito.PerformLayout();
@@ -513,5 +559,9 @@
         private TextBox textBoxProNombre;
         private TextBox textBoxProId;
         private Button button2;
+        private Button button3;
+        private NumericUpDown numericUpDownCarrito;
+        private TextBox textBoxSubTotal;
+        private Label labelSubTotal;
     }
 }
