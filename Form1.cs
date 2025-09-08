@@ -73,7 +73,10 @@ namespace Metodos
                 }
                 else if (p.Nombre.Contains(datoBuscado, StringComparison.OrdinalIgnoreCase))
                 {
+<<<<<<< HEAD
                     proBuscado = new Producto();
+=======
+>>>>>>> última
                     idSeleccionado = p.Codigo;
 
                     proBuscado.Codigo = p.Codigo;
