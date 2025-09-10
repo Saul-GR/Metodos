@@ -3,6 +3,8 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
@@ -16,7 +18,7 @@ namespace Metodos
         double SubTotal = 0;
         listaConDatos lista = new listaConDatos();
         List<Producto> productos = new List<Producto>();
-
+        List<proCarrito> proCar = new List<proCarrito>();
 
         public Form1()
         {
@@ -73,7 +75,9 @@ namespace Metodos
                 }
                 else if (p.Nombre.Contains(datoBuscado, StringComparison.OrdinalIgnoreCase))
                 {
+
                     proBuscado = new Producto();
+
                     idSeleccionado = p.Codigo;
 
                     proBuscado.Codigo = p.Codigo;
@@ -287,7 +291,7 @@ namespace Metodos
             numericUpDownCarrito.Minimum = 0;
             numericUpDownCarrito.Value = MaximoCompra;
             numericUpDownCarrito.Maximum = 0;
-            labelSubTotal.Text = "Q. 0.00";
+            textBoxSubTotal.Text = "Q. 0.00";
         }
         private void LimpiarCampos2()
         {
@@ -364,6 +368,50 @@ namespace Metodos
                 SubTotal = SubTotal * (double)numericUpDownCarrito.Value;
                 textBoxSubTotal.Text = "Q. " + SubTotal;
             }
-        }    
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //List<Producto> proCarrito = new List<Producto>();
+            proCarrito proCarrito = new proCarrito();
+
+            //Producto NuevoProducto = new Producto();
+
+            
+            foreach (proCarrito p in proCar)
+            {
+                if (p.Codigo == int.Parse(textBoxProId.Text))
+                {
+                    p.Cantidad = (int)numericUpDownCarrito.Value;
+                    p.SubTotal = double.Parse(textBoxSubTotal.Text.Replace("Q. ", ""));
+                    
+                    dgvCarrito.DataSource = null;
+                    dgvCarrito.DataSource = proCar;
+                    MessageBox.Show("El producto ya está en el carrito, se actualizó el subtotal.");
+                    calcularTotalGeneral();
+                    return;
+                    //LimpiarCampos();
+                }  
+            }
+            proCarrito.Codigo = int.Parse(textBoxProId.Text);
+            proCarrito.Nombre = textBoxProNombre.Text;
+            proCarrito.Descripcion = textBoxProDescripcion.Text;
+            proCarrito.Cantidad = (int)numericUpDownCarrito.Value;
+            proCarrito.Precio = double.Parse(textBoxProPrecio.Text);
+            proCarrito.SubTotal = proCarrito.Cantidad * proCarrito.Precio;
+            proCar.Add(proCarrito);
+            dgvCarrito.DataSource = null;
+            dgvCarrito.DataSource = proCar;
+            calcularTotalGeneral();
+        }
+        private void calcularTotalGeneral()
+        {
+            double TotalGeneral = 0;
+            foreach (proCarrito p in proCar)
+            {
+                TotalGeneral += p.SubTotal;
+            }
+            textBoxTotalGeneral.Text = "Q. " + TotalGeneral;
+        }
     }
 }
