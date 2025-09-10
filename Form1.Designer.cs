@@ -50,10 +50,11 @@
             labelProId = new Label();
             dgvProducto = new DataGridView();
             tpCarrito = new TabPage();
+            dgvCarrito = new DataGridView();
             label3 = new Label();
             textBox3 = new TextBox();
             label2 = new Label();
-            textBox2 = new TextBox();
+            textBoxTotalGeneral = new TextBox();
             tabPage3 = new TabPage();
             btnLimpiar = new Button();
             labelId = new Label();
@@ -75,6 +76,7 @@
             ((System.ComponentModel.ISupportInitialize)numericUpDownCarrito).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProducto).BeginInit();
             tpCarrito.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvCarrito).BeginInit();
             tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInventario).BeginInit();
             SuspendLayout();
@@ -183,6 +185,7 @@
             button3.TabIndex = 15;
             button3.Text = "Agregar al Carrito";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
@@ -291,10 +294,11 @@
             // 
             // tpCarrito
             // 
+            tpCarrito.Controls.Add(dgvCarrito);
             tpCarrito.Controls.Add(label3);
             tpCarrito.Controls.Add(textBox3);
             tpCarrito.Controls.Add(label2);
-            tpCarrito.Controls.Add(textBox2);
+            tpCarrito.Controls.Add(textBoxTotalGeneral);
             tpCarrito.Location = new Point(4, 24);
             tpCarrito.Name = "tpCarrito";
             tpCarrito.Padding = new Padding(3);
@@ -303,10 +307,19 @@
             tpCarrito.Text = "Carrito";
             tpCarrito.UseVisualStyleBackColor = true;
             // 
+            // dgvCarrito
+            // 
+            dgvCarrito.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCarrito.Location = new Point(31, 111);
+            dgvCarrito.Name = "dgvCarrito";
+            dgvCarrito.ReadOnly = true;
+            dgvCarrito.Size = new Size(699, 240);
+            dgvCarrito.TabIndex = 4;
+            // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(244, 56);
+            label3.Location = new Point(7, 27);
             label3.Name = "label3";
             label3.Size = new Size(106, 15);
             label3.TabIndex = 3;
@@ -314,7 +327,7 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(356, 53);
+            textBox3.Location = new Point(119, 24);
             textBox3.MaxLength = 25;
             textBox3.Name = "textBox3";
             textBox3.PasswordChar = '*';
@@ -324,21 +337,21 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(31, 56);
+            label2.Location = new Point(407, 69);
             label2.Name = "label2";
-            label2.Size = new Size(82, 15);
+            label2.Size = new Size(77, 15);
             label2.TabIndex = 1;
-            label2.Text = "Ingrese correo";
+            label2.Text = "Total general:";
             label2.Click += label2_Click;
             // 
-            // textBox2
+            // textBoxTotalGeneral
             // 
-            textBox2.CharacterCasing = CharacterCasing.Lower;
-            textBox2.Location = new Point(119, 53);
-            textBox2.MaxLength = 25;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 0;
+            textBoxTotalGeneral.Location = new Point(513, 66);
+            textBoxTotalGeneral.MaxLength = 25;
+            textBoxTotalGeneral.Name = "textBoxTotalGeneral";
+            textBoxTotalGeneral.ReadOnly = true;
+            textBoxTotalGeneral.Size = new Size(100, 23);
+            textBoxTotalGeneral.TabIndex = 0;
             // 
             // tabPage3
             // 
@@ -513,6 +526,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvProducto).EndInit();
             tpCarrito.ResumeLayout(false);
             tpCarrito.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvCarrito).EndInit();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInventario).EndInit();
@@ -531,7 +545,7 @@
         private TabPage tabPage3;
         private TabPage tabPage4;
         private Label label2;
-        private TextBox textBox2;
+        private TextBox textBoxTotalGeneral;
         private Label label3;
         private TextBox textBox3;
         private Button btnModificar;
@@ -563,5 +577,6 @@
         private NumericUpDown numericUpDownCarrito;
         private TextBox textBoxSubTotal;
         private Label labelSubTotal;
+        private DataGridView dgvCarrito;
     }
 }

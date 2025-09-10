@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace Metodos
 {
-    internal class Producto
+    internal class proCarrito
     {
         public int Codigo { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
-        public int Stock { get; set; }
+        public int Cantidad { get; set; }
         public double Precio { get; set; }
-        public string Activo { get; set; }
-        public double  SubTotal { get; set; }
+        public double SubTotal { get; set; }
     }
 }
