@@ -31,8 +31,8 @@
             button1 = new Button();
             textBoxProBuscado = new TextBox();
             label1 = new Label();
-            tabControl1 = new TabControl();
-            tabPage1 = new TabPage();
+            tab1 = new TabControl();
+            tabProductos = new TabPage();
             textBoxSubTotal = new TextBox();
             labelSubTotal = new Label();
             numericUpDownCarrito = new NumericUpDown();
@@ -49,13 +49,13 @@
             lableProNombre = new Label();
             labelProId = new Label();
             dgvProducto = new DataGridView();
-            tpCarrito = new TabPage();
+            tabCarrito = new TabPage();
             dgvCarrito = new DataGridView();
             label3 = new Label();
             textBox3 = new TextBox();
             label2 = new Label();
             textBoxTotalGeneral = new TextBox();
-            tabPage3 = new TabPage();
+            tabInventario = new TabPage();
             btnLimpiar = new Button();
             labelId = new Label();
             checkBoxActivo = new CheckBox();
@@ -70,14 +70,15 @@
             btnModificar = new Button();
             btnAgregar = new Button();
             dgvInventario = new DataGridView();
-            tabPage4 = new TabPage();
-            tabControl1.SuspendLayout();
-            tabPage1.SuspendLayout();
+            TabHistorialCompras = new TabPage();
+            button4 = new Button();
+            tab1.SuspendLayout();
+            tabProductos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownCarrito).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProducto).BeginInit();
-            tpCarrito.SuspendLayout();
+            tabCarrito.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCarrito).BeginInit();
-            tabPage3.SuspendLayout();
+            tabInventario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInventario).BeginInit();
             SuspendLayout();
             // 
@@ -109,46 +110,46 @@
             label1.Text = "Buscar producto";
             label1.Click += label1_Click;
             // 
-            // tabControl1
+            // tab1
             // 
-            tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tpCarrito);
-            tabControl1.Controls.Add(tabPage3);
-            tabControl1.Controls.Add(tabPage4);
-            tabControl1.Location = new Point(12, 43);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(776, 403);
-            tabControl1.TabIndex = 3;
+            tab1.Controls.Add(tabProductos);
+            tab1.Controls.Add(tabCarrito);
+            tab1.Controls.Add(TabHistorialCompras);
+            tab1.Controls.Add(tabInventario);
+            tab1.Location = new Point(12, 43);
+            tab1.Name = "tab1";
+            tab1.SelectedIndex = 0;
+            tab1.Size = new Size(776, 403);
+            tab1.TabIndex = 3;
             // 
-            // tabPage1
+            // tabProductos
             // 
-            tabPage1.Controls.Add(textBoxSubTotal);
-            tabPage1.Controls.Add(labelSubTotal);
-            tabPage1.Controls.Add(numericUpDownCarrito);
-            tabPage1.Controls.Add(button3);
-            tabPage1.Controls.Add(button2);
-            tabPage1.Controls.Add(textBoxProStock);
-            tabPage1.Controls.Add(textBoxProPrecio);
-            tabPage1.Controls.Add(textBoxProDescripcion);
-            tabPage1.Controls.Add(textBoxProNombre);
-            tabPage1.Controls.Add(textBoxProId);
-            tabPage1.Controls.Add(labelProStock);
-            tabPage1.Controls.Add(labelProPrecio);
-            tabPage1.Controls.Add(labelProDescripcion);
-            tabPage1.Controls.Add(lableProNombre);
-            tabPage1.Controls.Add(labelProId);
-            tabPage1.Controls.Add(dgvProducto);
-            tabPage1.Controls.Add(textBoxProBuscado);
-            tabPage1.Controls.Add(label1);
-            tabPage1.Controls.Add(button1);
-            tabPage1.Location = new Point(4, 24);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(768, 375);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "Productos";
-            tabPage1.UseVisualStyleBackColor = true;
+            tabProductos.Controls.Add(textBoxSubTotal);
+            tabProductos.Controls.Add(labelSubTotal);
+            tabProductos.Controls.Add(numericUpDownCarrito);
+            tabProductos.Controls.Add(button3);
+            tabProductos.Controls.Add(button2);
+            tabProductos.Controls.Add(textBoxProStock);
+            tabProductos.Controls.Add(textBoxProPrecio);
+            tabProductos.Controls.Add(textBoxProDescripcion);
+            tabProductos.Controls.Add(textBoxProNombre);
+            tabProductos.Controls.Add(textBoxProId);
+            tabProductos.Controls.Add(labelProStock);
+            tabProductos.Controls.Add(labelProPrecio);
+            tabProductos.Controls.Add(labelProDescripcion);
+            tabProductos.Controls.Add(lableProNombre);
+            tabProductos.Controls.Add(labelProId);
+            tabProductos.Controls.Add(dgvProducto);
+            tabProductos.Controls.Add(textBoxProBuscado);
+            tabProductos.Controls.Add(label1);
+            tabProductos.Controls.Add(button1);
+            tabProductos.Location = new Point(4, 24);
+            tabProductos.Name = "tabProductos";
+            tabProductos.Padding = new Padding(3);
+            tabProductos.Size = new Size(768, 375);
+            tabProductos.TabIndex = 0;
+            tabProductos.Text = "Productos";
+            tabProductos.UseVisualStyleBackColor = true;
             // 
             // textBoxSubTotal
             // 
@@ -292,20 +293,21 @@
             dgvProducto.TabIndex = 3;
             dgvProducto.CellClick += dgvUsuarios_CellClick;
             // 
-            // tpCarrito
+            // tabCarrito
             // 
-            tpCarrito.Controls.Add(dgvCarrito);
-            tpCarrito.Controls.Add(label3);
-            tpCarrito.Controls.Add(textBox3);
-            tpCarrito.Controls.Add(label2);
-            tpCarrito.Controls.Add(textBoxTotalGeneral);
-            tpCarrito.Location = new Point(4, 24);
-            tpCarrito.Name = "tpCarrito";
-            tpCarrito.Padding = new Padding(3);
-            tpCarrito.Size = new Size(768, 375);
-            tpCarrito.TabIndex = 1;
-            tpCarrito.Text = "Carrito";
-            tpCarrito.UseVisualStyleBackColor = true;
+            tabCarrito.Controls.Add(button4);
+            tabCarrito.Controls.Add(dgvCarrito);
+            tabCarrito.Controls.Add(label3);
+            tabCarrito.Controls.Add(textBox3);
+            tabCarrito.Controls.Add(label2);
+            tabCarrito.Controls.Add(textBoxTotalGeneral);
+            tabCarrito.Location = new Point(4, 24);
+            tabCarrito.Name = "tabCarrito";
+            tabCarrito.Padding = new Padding(3);
+            tabCarrito.Size = new Size(768, 375);
+            tabCarrito.TabIndex = 1;
+            tabCarrito.Text = "Carrito";
+            tabCarrito.UseVisualStyleBackColor = true;
             // 
             // dgvCarrito
             // 
@@ -337,7 +339,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(407, 69);
+            label2.Location = new Point(414, 70);
             label2.Name = "label2";
             label2.Size = new Size(77, 15);
             label2.TabIndex = 1;
@@ -346,36 +348,36 @@
             // 
             // textBoxTotalGeneral
             // 
-            textBoxTotalGeneral.Location = new Point(513, 66);
+            textBoxTotalGeneral.Location = new Point(505, 66);
             textBoxTotalGeneral.MaxLength = 25;
             textBoxTotalGeneral.Name = "textBoxTotalGeneral";
             textBoxTotalGeneral.ReadOnly = true;
             textBoxTotalGeneral.Size = new Size(100, 23);
             textBoxTotalGeneral.TabIndex = 0;
             // 
-            // tabPage3
+            // tabInventario
             // 
-            tabPage3.Controls.Add(btnLimpiar);
-            tabPage3.Controls.Add(labelId);
-            tabPage3.Controls.Add(checkBoxActivo);
-            tabPage3.Controls.Add(labelPrecio);
-            tabPage3.Controls.Add(labelDescripcion);
-            tabPage3.Controls.Add(labelStock);
-            tabPage3.Controls.Add(labelNombre);
-            tabPage3.Controls.Add(textBoxPrecio);
-            tabPage3.Controls.Add(textBoxStock);
-            tabPage3.Controls.Add(textBoxDescripcion);
-            tabPage3.Controls.Add(textBoxNombre);
-            tabPage3.Controls.Add(btnModificar);
-            tabPage3.Controls.Add(btnAgregar);
-            tabPage3.Controls.Add(dgvInventario);
-            tabPage3.Location = new Point(4, 24);
-            tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(768, 375);
-            tabPage3.TabIndex = 2;
-            tabPage3.Text = "Inventario";
-            tabPage3.UseVisualStyleBackColor = true;
-            tabPage3.Click += tabPage3_Click;
+            tabInventario.Controls.Add(btnLimpiar);
+            tabInventario.Controls.Add(labelId);
+            tabInventario.Controls.Add(checkBoxActivo);
+            tabInventario.Controls.Add(labelPrecio);
+            tabInventario.Controls.Add(labelDescripcion);
+            tabInventario.Controls.Add(labelStock);
+            tabInventario.Controls.Add(labelNombre);
+            tabInventario.Controls.Add(textBoxPrecio);
+            tabInventario.Controls.Add(textBoxStock);
+            tabInventario.Controls.Add(textBoxDescripcion);
+            tabInventario.Controls.Add(textBoxNombre);
+            tabInventario.Controls.Add(btnModificar);
+            tabInventario.Controls.Add(btnAgregar);
+            tabInventario.Controls.Add(dgvInventario);
+            tabInventario.Location = new Point(4, 24);
+            tabInventario.Name = "tabInventario";
+            tabInventario.Size = new Size(768, 375);
+            tabInventario.TabIndex = 2;
+            tabInventario.Text = "Inventario";
+            tabInventario.UseVisualStyleBackColor = true;
+            tabInventario.Click += tabPage3_Click;
             // 
             // btnLimpiar
             // 
@@ -501,34 +503,43 @@
             dgvInventario.CellContentClick += dgvInventario_CellContentClick;
             dgvInventario.CellFormatting += dgvInventario_CellFormatting;
             // 
-            // tabPage4
+            // TabHistorialCompras
             // 
-            tabPage4.Location = new Point(4, 24);
-            tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(768, 375);
-            tabPage4.TabIndex = 3;
-            tabPage4.Text = "Control de usuarios";
-            tabPage4.UseVisualStyleBackColor = true;
+            TabHistorialCompras.Location = new Point(4, 24);
+            TabHistorialCompras.Name = "TabHistorialCompras";
+            TabHistorialCompras.Size = new Size(768, 375);
+            TabHistorialCompras.TabIndex = 3;
+            TabHistorialCompras.Text = "Historial de compras";
+            TabHistorialCompras.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(619, 65);
+            button4.Name = "button4";
+            button4.Size = new Size(111, 23);
+            button4.TabIndex = 5;
+            button4.Text = "Finalizar compra";
+            button4.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(tabControl1);
+            Controls.Add(tab1);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
-            tabControl1.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
-            tabPage1.PerformLayout();
+            tab1.ResumeLayout(false);
+            tabProductos.ResumeLayout(false);
+            tabProductos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownCarrito).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvProducto).EndInit();
-            tpCarrito.ResumeLayout(false);
-            tpCarrito.PerformLayout();
+            tabCarrito.ResumeLayout(false);
+            tabCarrito.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCarrito).EndInit();
-            tabPage3.ResumeLayout(false);
-            tabPage3.PerformLayout();
+            tabInventario.ResumeLayout(false);
+            tabInventario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInventario).EndInit();
             ResumeLayout(false);
         }
@@ -538,12 +549,12 @@
         private Button button1;
         private TextBox textBoxProBuscado;
         private Label label1;
-        private TabControl tabControl1;
-        private TabPage tabPage1;
-        private TabPage tpCarrito;
+        private TabControl tab1;
+        private TabPage tabProductos;
+        private TabPage tabCarrito;
         private DataGridView dgvProducto;
-        private TabPage tabPage3;
-        private TabPage tabPage4;
+        private TabPage tabInventario;
+        private TabPage TabHistorialCompras;
         private Label label2;
         private TextBox textBoxTotalGeneral;
         private Label label3;
@@ -578,5 +589,6 @@
         private TextBox textBoxSubTotal;
         private Label labelSubTotal;
         private DataGridView dgvCarrito;
+        private Button button4;
     }
 }
